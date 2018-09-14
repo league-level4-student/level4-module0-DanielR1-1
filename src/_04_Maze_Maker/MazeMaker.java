@@ -51,6 +51,7 @@ public class MazeMaker {
 			// C4. make the new cell the current cell and mark it as visited
 			currentCell = RCell2;
 			currentCell.setBeenVisited(true);
+			selectNextPath(currentCell);
 		}
 
 		// D. if all neighbors are visited
@@ -61,6 +62,7 @@ public class MazeMaker {
 				// D1a. pop a cell from the stack
 				currentCell = uncheckedCells.pop();
 				// D1b. make that the current cell
+				selectNextPath(currentCell);
 			}
 		}
 
@@ -78,11 +80,11 @@ public class MazeMaker {
 			c1.setNorthWall(false);
 			c2.setSouthWall(false);
 		}
-		if (c1.getY() == c2.getY() && (c1.getY() - c2.getY()) == -1) {
+		if (c1.getY() == c2.getY() && (c1.getX() - c2.getX()) == -1) {
 			c1.setEastWall(false);
 			c2.setWestWall(false);
 		}
-		if (c1.getY() == c2.getY() && (c1.getY() - c2.getY()) == 1) {
+		if (c1.getY() == c2.getY() && (c1.getX() - c2.getX()) == 1) {
 			c1.setWestWall(false);
 			c2.setEastWall(false);
 		}
